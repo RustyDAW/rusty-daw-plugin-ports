@@ -1,0 +1,7 @@
+[package]
+name = "cloudseed-core"
+version = "0.0.1"
+authors = ["RustyDAW maintainers"]
+edition = "2018"
+
+[dependencies]
