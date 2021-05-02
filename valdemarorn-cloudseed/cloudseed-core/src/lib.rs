@@ -3,6 +3,12 @@ mod allpass_diffuser;
 mod multitap_diffuser;
 mod value_tables;
 mod reverb_channel;
+mod modulated_delay;
+mod delay_line;
+mod sha256_random;
+mod high_pass_1;
+mod low_pass_1;
+mod utils;
 
 use parameters::{Parameters, ParameterName};
 use reverb_channel::{ReverbChannel, ChannelLr};
@@ -64,13 +70,13 @@ impl Cloudseed {
 
         // also make the channels handle this parameter change
         let scaled_value = self.get_scaled_parameter(parameter_name);
-        self.channel_left.handle_parameter_change(parameter_name, scaled_value);
-        self.channel_right.handle_parameter_change(parameter_name, scaled_value);
+        self.channel_left.set_parameter(parameter_name, scaled_value);
+        self.channel_right.set_parameter(parameter_name, scaled_value);
     }
 
     pub fn clear_buffers(&mut self) {
-        self.channel_left.clear_buffer();
-        self.channel_right.clear_buffer();
+        self.channel_left.clear_buffers();
+        self.channel_right.clear_buffers();
     }
 
     pub fn process(&mut self, input: &[&[f64]], output: &mut [&mut [f64]], buffer_size: usize) {
