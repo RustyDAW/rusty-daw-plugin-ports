@@ -3,6 +3,8 @@
 Ports of open source audio plugins to Rust & baseplug for use with the RustyDAW
 project.
 
+Please take a look at the [`DSP Design Document`] for more details.
+
 ## Repo structure
 
 This repo is a cargo workspace, comprised of various different crates that make
@@ -19,3 +21,5 @@ we may have some directories for common functionality between the plugins.
 
 Each plugin may be licensed differently. Check that plugin's directory for
 details.
+
+[`DSP Design Document`]: https://github.com/MeadowlarkDAW/Meadowlark/blob/main/DSP_DESIGN_DOC.md
